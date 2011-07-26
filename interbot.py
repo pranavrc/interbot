@@ -32,21 +32,29 @@ while True:
    if data.find("PRIVMSG") != -1:
          parser.parsemsg(data)
          data=data.rstrip() #remove trailing 'rn'
-         data=data.split()
-         data[3:] = [' '.join(data[3:])]
-         print data
-
-         if data[3].find(":") != -1:
-            data[3]=data[3].strip(':') 
-       
-         _terminal_=data[3];
-         #os.system(_terminal_)
-         p = sp.Popen(_terminal_, shell=True, stdout=sp.PIPE, )
-         #result = p.read()
-         #result[:]=[' '.join(result[:])]
-         result=p.communicate()[0]
-         result=result.replace('\n',' ')
-         s.send("PRIVMSG %s :%s\r\n" % (CHANNELINIT, result))
+         #if data.find(OWNER)!=-1:
+	
+	 data=data.split()
+	 data[3:] = [' '.join(data[3:])]
+	 print data
+	  
+	 _controller_=data[0].split('!')
+	 _controller_[0]=_controller_[0].strip(':')
+	 print _controller_[0]
+	 
+	    
+	 if _controller_[0]==OWNER:
+		if data[3].find(":") != -1:
+		    data[3]=data[3].strip(':') 
+	      
+		_terminal_=data[3];
+		#os.system(_terminal_)
+		p = sp.Popen(_terminal_, shell=True, stdout=sp.PIPE, )
+		#result = p.read()
+		#result[:]=[' '.join(result[:])]
+		result=p.communicate()[0]
+		result=result.replace('\n',' ')
+		s.send("PRIVMSG %s :%s\r\n" % (CHANNELINIT, result))
 
 while 1:
 	readbuffer=readbuffer+s.recv(1024)
