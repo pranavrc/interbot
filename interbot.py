@@ -6,13 +6,13 @@ import string
 import parser
 import os
 import subprocess as sp
-HOST="irc.freenode.net"
-PORT=6667
-NICK="Interbot"
-IDENT="Interbot"
-REALNAME="Interbot"
-OWNER="Pranav_rcmas"
-CHANNELINIT="#noobcl"
+HOST=raw_input("Server Name: ")
+PORT=int(input("Port number: "))
+NICK=raw_input("Bot's Nick: ")
+IDENT=raw_input("Bot's Identity: ")
+REALNAME=raw_input("Bot's Real Name: ")
+OWNER=raw_input("Bot's Owner: ")
+CHANNELINIT=raw_input("Channel to join: ")
 readbuffer=""
 s=socket.socket( )
 s.connect((HOST, PORT))
