@@ -21,7 +21,7 @@ s.send("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME))
 s.send("JOIN :%s\r\n" % CHANNELINIT)
 
 
-s.send("PRIVMSG %s :%s\r\n" % (CHANNELINIT, "Hi! I'm Interbot, and I'm your bitch xD"))
+s.send("PRIVMSG %s :%s\r\n" % (CHANNELINIT, "Hi! I'm %s, and I'm your bitch xD" % NICK))
 
 while True:
    data = s.recv ( 500 )
